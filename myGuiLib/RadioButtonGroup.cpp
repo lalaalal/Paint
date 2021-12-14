@@ -23,4 +23,9 @@ void RadioButtonGroup::select(RadioButton* radioButton) {
 		}		
 	}
 	radioButton->setChecked(true);
+	selected_ = radioButton;
+}
+
+RadioButton* RadioButtonGroup::getSelected() const {
+	return selected_;
 }

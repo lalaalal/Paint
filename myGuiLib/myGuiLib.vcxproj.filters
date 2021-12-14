@@ -60,6 +60,15 @@
     <ClCompile Include="RadioButtonGroup.cpp">
       <Filter>Source Files\Component</Filter>
     </ClCompile>
+    <ClCompile Include="SelectionComponent.cpp">
+      <Filter>Source Files\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionGroup.cpp">
+      <Filter>Source Files\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionList.cpp">
+      <Filter>Source Files\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frame.h">
@@ -102,6 +111,15 @@
       <Filter>Header Files\Component</Filter>
     </ClInclude>
     <ClInclude Include="RadioButtonGroup.h">
+      <Filter>Header Files\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionComponent.h">
+      <Filter>Header Files\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionGroup.h">
+      <Filter>Header Files\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionList.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@ class SubMenu;
 
 class PopUpList : public Container {
 public:
-	PopUpList(MyPoint at);
+	PopUpList(MyPoint at = { 0, 0 });
 
 	void closeList();
 	void closeSubMenu();

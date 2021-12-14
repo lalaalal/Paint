@@ -12,5 +12,8 @@ public:
 	void addChild(Component* component) override;
 	void select(RadioButton* radioButton);
 	RadioButton* getSelected() const;
+
+private:
+	RadioButton* selected_ = nullptr;
 };
 

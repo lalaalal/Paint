@@ -116,10 +116,6 @@ void Frame::run() {
 
 void Frame::eventHandler(MyEvent e)
 {
-	//// TODO: 여기에 구현 코드 추가.
-	//OutputDebugString(L"Event\n");
-	//std::cout << L"Event\n" << std::endl;
-
 	if (e.isRButtonUp() || e.isLButtonUp()) {
 		MyPoint point = e.getPos();
 		Component* component = findComponent(point);

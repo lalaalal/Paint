@@ -15,6 +15,8 @@
 #include "CheckBox.h"
 #include "RadioButton.h"
 #include "RadioButtonGroup.h"
+#include "SelectionList.h"
+#include "SelectionComponent.h"
 
 PaintFrame::PaintFrame(std::wstring title, int width, int height)
 	: Frame(title, width, height), type_(Figure::Type::None), commandManager_(new CommandManager()) { }
@@ -54,6 +56,12 @@ void PaintFrame::initialize() {
 	group->addChild(radio_b);
 	radio_a->setChecked(true);
 
+	auto selectionList = new SelectionList(100, Component::WRAP_CONTENT);
+	auto selectionButton1 = new SelectionComponent(100, Component::WRAP_CONTENT, "test1");
+	auto selectionButton2 = new SelectionComponent(100, Component::WRAP_CONTENT, "test2");
+	selectionList->addChild(selectionButton1);
+	selectionList->addChild(selectionButton2);
+
 	menuBar_ = new MenuBar(hWnd_);
 	menuBar_->setPadding(0);
 	menuBar_->setBorder(true);
@@ -62,6 +70,7 @@ void PaintFrame::initialize() {
 	menuBar_->addChild(undoButton);
 	menuBar_->addChild(redoButton);
 	menuBar_->addChild(group);
+	menuBar_->addChild(selectionList);
 
 	addComponent(menuBar_);
 }
@@ -69,7 +78,6 @@ void PaintFrame::initialize() {
 void PaintFrame::eventHandler(MyEvent e) {
 	Frame::eventHandler(e);
 
-	// 이벤트의 종류를 파악해서 사각형 그리기를 여기서 해준다.
 	if (e.isLButtonDown() || e.isRButtonDown()) {
 		start_ = e.getPos();
 	}
@@ -83,7 +91,6 @@ void PaintFrame::eventHandler(MyEvent e) {
 }
 
 void PaintFrame::repaint() {
-	// 그려야할 모든 것은 여기에.
 	for (Figure* figure : figures_) {
 		figure->paint(hDC_);
 	}
