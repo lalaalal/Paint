@@ -3,7 +3,7 @@
 #include "PaintFrame.h"
 #include "box.h"
 #include "figure.h"
-#include "button.h"
+#include "Button.h"
 #include "PaintOnClickListeners.h"
 #include "Label.h"
 #include "MenuBar.h"
@@ -12,6 +12,9 @@
 #include "CommandManager.h"
 #include "PaintButtons.h"
 #include "SubMenu.h"
+#include "CheckBox.h"
+#include "RadioButton.h"
+#include "RadioButtonGroup.h"
 
 PaintFrame::PaintFrame(std::wstring title, int width, int height)
 	: Frame(title, width, height), type_(Figure::Type::None), commandManager_(new CommandManager()) { }
@@ -28,24 +31,31 @@ PaintFrame::~PaintFrame() {
 void PaintFrame::initialize() {
 	Frame::initialize();
 
-	Button* rectangleButton = new Button({ 0, 0 }, 90, Component::WRAP_CONTENT, "Rectangle", true);
-	Button* ellipseButton = new Button({ 0, 0 }, 90, Component::WRAP_CONTENT, "Ellipse", true);
-	Label* figureLabel = new Label({ 0, 0 }, 90, Component::WRAP_CONTENT, "None", true);
+	Button* rectangleButton = new Button(90, Component::WRAP_CONTENT, "Rectangle");
+	Button* ellipseButton = new Button(90, Component::WRAP_CONTENT, "Ellipse");
+	Label* figureLabel = new Label(90, Component::WRAP_CONTENT, "None");
 	rectangleButton->setOnClickListener(new FigureButtonListener(this, figureLabel, Figure::Type::RectangleType));
 	ellipseButton->setOnClickListener(new FigureButtonListener(this, figureLabel, Figure::Type::EllipseType));
 
-	UndoButton* undoButton = new UndoButton({ 0, 0 }, 90, Component::WRAP_CONTENT, commandManager_);
-	RedoButton* redoButton = new RedoButton({ 0, 0 }, 90, Component::WRAP_CONTENT, commandManager_);
+	UndoButton* undoButton = new UndoButton(90, Component::WRAP_CONTENT, commandManager_);
+	RedoButton* redoButton = new RedoButton(90, Component::WRAP_CONTENT, commandManager_);
 	undoButton->setOnClickListener(new UndoButtonListener(commandManager_));
 	redoButton->setOnClickListener(new RedoButtonListener(commandManager_));
 	commandManager_->addObserver(undoButton);
 	commandManager_->addObserver(redoButton);
 
-	Menu* tools = new Menu({ 0, 0 }, 90, Component::WRAP_CONTENT, "Tools");
-	SubMenu* figureMenu = new SubMenu({ 0, 0 }, 90, Component::WRAP_CONTENT, "Figure");
+	Menu* tools = new Menu(90, Component::WRAP_CONTENT, "Tools");
+	SubMenu* figureMenu = new SubMenu(90, Component::WRAP_CONTENT, "Figure");
 	tools->addComponent(figureMenu);
 	figureMenu->addComponent(rectangleButton);
 	figureMenu->addComponent(ellipseButton);
+
+	auto radio_a = new RadioButton(100, Component::WRAP_CONTENT, "a");
+	auto radio_b = new RadioButton(100, Component::WRAP_CONTENT, "b");
+	auto group = new RadioButtonGroup(Component::WRAP_CONTENT, Component::WRAP_CONTENT);
+	group->addChild(radio_a);
+	group->addChild(radio_b);
+	radio_a->setChecked(true);
 
 	menuBar_ = new MenuBar(hWnd_);
 	menuBar_->setPadding(0);
@@ -54,6 +64,7 @@ void PaintFrame::initialize() {
 	menuBar_->addChild(figureLabel);
 	menuBar_->addChild(undoButton);
 	menuBar_->addChild(redoButton);
+	menuBar_->addChild(group);
 
 	addComponent(menuBar_);
 }

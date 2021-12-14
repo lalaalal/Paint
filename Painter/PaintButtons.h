@@ -8,7 +8,7 @@ class CommandManager;
 
 class UndoButton : public Button, public Observer {
 public:
-	UndoButton(MyPoint at, int width, int height, CommandManager* commandManager);
+	UndoButton(int width, int height, CommandManager* commandManager);
 	void update() override;
 
 	static const std::string UNDO_TEXT;
@@ -19,7 +19,7 @@ private:
 
 class RedoButton : public Button, public Observer {
 public:
-	RedoButton(MyPoint at, int width, int height, CommandManager* commandManager);
+	RedoButton(int width, int height, CommandManager* commandManager);
 	void update() override;
 
 	static const std::string REDO_TEXT;

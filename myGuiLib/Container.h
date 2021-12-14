@@ -21,10 +21,9 @@ public:
 	void moveStartPoint(MyPoint at) override;
 	bool isInComponent(MyPoint at) const override;
 
-	void addChild(Component* component);
+	virtual void addChild(Component* component);
 
 	static const int DEFAULT_PADDING = 10;
-	static const int DEFAULT_MARGIN = 0;
 
 protected:
 	void paintContent(HDC hDC) override;

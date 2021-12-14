@@ -8,6 +8,9 @@ SubMenu::SubMenu(MyPoint at, int width, int height, std::string text)
 	menuList_->setStartPoint(menuListPoint);
 }
 
+SubMenu::SubMenu(int width, int height, std::string text) 
+	: SubMenu({ 0, 0 }, width, height, text) { }
+
 void SubMenu::onClick(MyEvent e) {
 	PopUpList* parent = dynamic_cast<PopUpList*>(getParent());
 	if (parent != nullptr) {

@@ -1,10 +1,10 @@
 #include "Container.h"
 
 Container::Container(MyPoint start, int width, int height, Orientation orientation)
-	: Component(start, width, height, DEFAULT_PADDING, DEFAULT_MARGIN, false), components_(), orientation_(orientation) { }
+	: Component(start, width, height, DEFAULT_PADDING, false), components_(), orientation_(orientation) { }
 
 Container::Container(MyPoint start, int width, int height, bool paintBorder, Orientation orientation)
-	: Component(start, width, height, DEFAULT_PADDING, DEFAULT_MARGIN, paintBorder), components_(), orientation_(orientation) { }
+	: Component(start, width, height, DEFAULT_PADDING, paintBorder), components_(), orientation_(orientation) { }
 
 Container::~Container() {
 	while (!components_.empty()) {

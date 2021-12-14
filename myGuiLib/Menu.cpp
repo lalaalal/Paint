@@ -8,6 +8,9 @@ Menu::Menu(MyPoint at, int width, int height, std::string text)
 	menuList_->setVisibility(false);
 }
 
+Menu::Menu(int width, int height, std::string text) 
+	: Menu({ 0, 0 }, width, height, text) { }
+
 Menu::~Menu() {
 	delete menuList_;
 }

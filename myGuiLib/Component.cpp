@@ -2,8 +2,8 @@
 #include "Container.h"
 #include "OnClickListener.h"
 
-Component::Component(MyPoint at, int width, int height, int padding, int margin, bool paintBorder)
-	: at_(at), width_(width), height_(height), padding_(padding), margin_(margin), paintBorder_(paintBorder) { }
+Component::Component(MyPoint at, int width, int height, int padding, bool paintBorder)
+	: at_(at), rawWidth_(width), rawHeight_(height), padding_(padding), paintBorder_(paintBorder) { }
 
 Component::~Component() {
 
@@ -47,19 +47,9 @@ int Component::getPadding() const {
 	return padding_;
 }
 
-int Component::getMargin() const {
-	return margin_;
-}
-
 void Component::setPadding(int padding) {
 	if (padding >= 0) {
 		padding_ = padding;
-	}
-}
-
-void Component::setMargin(int margin) {
-	if (margin >= 0) {
-		margin_ = margin;
 	}
 }
 
@@ -84,35 +74,35 @@ void Component::moveStartPoint(MyPoint delta) {
 }
 
 int Component::getWidth() const {
-	if (width_ == WRAP_CONTENT) {
+	if (rawWidth_ == WRAP_CONTENT) {
 		return getContentWidth() + padding_ * 2;
 	}
-	else if (width_ == MATCH_PARENT) {
+	else if (rawWidth_ == MATCH_PARENT) {
 		if (parent_ != nullptr) {
 			return parent_->getWidth();
 		}
 	}
-	return width_ + padding_ * 2;
+	return rawWidth_ + padding_ * 2;
 }
 
 int Component::getHeight() const {
-	if (height_ == WRAP_CONTENT) {
+	if (rawHeight_ == WRAP_CONTENT) {
 		return getContentHeight() + padding_ * 2;
 	}
-	else if (height_ == MATCH_PARENT) {
+	else if (rawHeight_ == MATCH_PARENT) {
 		if (parent_ != nullptr) {
 			return parent_->getWidth();
 		}
 	}
-	return height_ + padding_ * 2;
+	return rawHeight_ + padding_ * 2;
 }
 
 void Component::setWidth(int width) {
-	width_ = width;
+	rawWidth_ = width;
 }
 
 void Component::setHeight(int height) {
-	height_ = height;
+	rawHeight_ = height;
 }
 
 Container* Component::getParent() const {

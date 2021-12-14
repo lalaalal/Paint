@@ -4,8 +4,8 @@
 const std::string UndoButton::UNDO_TEXT = "undo";
 const std::string UndoButton::UNDOABLE_TEXT = "undo*";
 
-UndoButton::UndoButton(MyPoint at, int width, int height, CommandManager* commandManager)
-	: Button(at, width, height, UNDO_TEXT), commandManager_(commandManager) { }
+UndoButton::UndoButton(int width, int height, CommandManager* commandManager)
+	: Button({ 0, 0 }, width, height, UNDO_TEXT), commandManager_(commandManager) { }
 
 void UndoButton::update() {
 	if (commandManager_->undoable()) {
@@ -19,8 +19,8 @@ void UndoButton::update() {
 const std::string RedoButton::REDO_TEXT = "redo";
 const std::string RedoButton::REDOABLE_TEXT = "redo*";
 
-RedoButton::RedoButton(MyPoint at, int width, int height, CommandManager* commandManager)
-	: Button(at, width, height, REDO_TEXT), commandManager_(commandManager) { }
+RedoButton::RedoButton(int width, int height, CommandManager* commandManager)
+	: Button({ 0, 0 }, width, height, REDO_TEXT), commandManager_(commandManager) { }
 
 void RedoButton::update() {
 	if (commandManager_->redoable()) {

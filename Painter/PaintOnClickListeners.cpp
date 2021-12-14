@@ -1,7 +1,7 @@
 #include "PaintOnClickListeners.h"
 #include "PaintFrame.h"
 #include "Label.h"
-#include "button.h"
+#include "Button.h"
 #include "CommandManager.h"
 
 FruitButtonListener::FruitButtonListener(Label* label, std::string text)

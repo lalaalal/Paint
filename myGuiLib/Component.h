@@ -7,7 +7,7 @@ class Container;
 
 class Component {
 public:
-	Component(MyPoint at, int width, int height, int padding = 0, int margin = 0, bool paintBorder = false);
+	Component(MyPoint at, int width, int height, int padding = 0, bool paintBorder = false);	
 	virtual ~Component();
 	virtual bool isInComponent(MyPoint at) const;
 	virtual void onClick(MyEvent e);
@@ -16,9 +16,7 @@ public:
 	void setBorder(bool value);
 
 	int getPadding() const;
-	int getMargin() const;
 	void setPadding(int padding);
-	void setMargin(int padding);
 
 	bool isVisible() const;
 	void setVisibility(bool value);
@@ -45,7 +43,6 @@ protected:
 	MyPoint at_;
 
 	int padding_;
-	int margin_;
 
 	Container* parent_ = nullptr;
 
@@ -54,6 +51,6 @@ private:
 	bool paintBorder_;
 	bool isVisible_ = true;
 
-	int width_;
-	int height_;
+	int rawWidth_;
+	int rawHeight_;
 };

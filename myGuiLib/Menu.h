@@ -7,6 +7,7 @@ class PopUpList;
 class Menu : public Button {
 public:
 	Menu(MyPoint at, int width, int height, std::string text);
+	Menu(int width, int height, std::string text);
 	~Menu();
 	void openList();
 	void closeList();

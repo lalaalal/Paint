@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -143,7 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="button.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="frame.cpp" />
@@ -152,10 +153,13 @@
     <ClCompile Include="MenuBar.cpp" />
     <ClCompile Include="Misc.cpp" />
     <ClCompile Include="PopUpList.cpp" />
+    <ClCompile Include="RadioButton.cpp" />
+    <ClCompile Include="RadioButtonGroup.cpp" />
     <ClCompile Include="SubMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="button.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="CheckBox.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="frame.h" />
@@ -165,6 +169,8 @@
     <ClInclude Include="Misc.h" />
     <ClInclude Include="OnClickListener.h" />
     <ClInclude Include="PopUpList.h" />
+    <ClInclude Include="RadioButton.h" />
+    <ClInclude Include="RadioButtonGroup.h" />
     <ClInclude Include="SubMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
