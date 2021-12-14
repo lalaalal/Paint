@@ -90,6 +90,11 @@ int Container::getTotalHeight() const {
 void Container::setOrientation(Orientation orientation) {
 	orientation_ = orientation;
 
+	std::list<Component*> components = components_;
+	components_.clear();
+	for (Component* component : components) {
+		addChild(component);
+	}
 }
 
 void Container::setStartPoint(MyPoint at) {

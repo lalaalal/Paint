@@ -20,11 +20,6 @@ PaintFrame::PaintFrame(std::wstring title, int width, int height)
 	: Frame(title, width, height), type_(Figure::Type::None), commandManager_(new CommandManager()) { }
 
 PaintFrame::~PaintFrame() {
-	/*while (!figures_.empty()) {
-		Figure* figure = figures_.front();
-		delete figure;
-		figures_.pop_front();
-	}*/
 	delete commandManager_;
 }
 
@@ -53,6 +48,8 @@ void PaintFrame::initialize() {
 	auto radio_a = new RadioButton(100, Component::WRAP_CONTENT, "a");
 	auto radio_b = new RadioButton(100, Component::WRAP_CONTENT, "b");
 	auto group = new RadioButtonGroup(Component::WRAP_CONTENT, Component::WRAP_CONTENT);
+	group->setPadding(0);
+	group->setOrientation(Container::Orientation::HORIZONTAL);
 	group->addChild(radio_a);
 	group->addChild(radio_b);
 	radio_a->setChecked(true);
