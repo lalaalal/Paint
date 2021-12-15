@@ -16,6 +16,7 @@
 #include "SelectionList.h"
 #include "SelectionComponent.h"
 #include "FigureManager.h"
+#include "EditText.h"
 
 PaintFrame::PaintFrame(std::wstring title, int width, int height)
 	: Frame(title, width, height), commandManager_(new CommandManager()), figureManager_(new FigureManager()) { }
@@ -27,16 +28,16 @@ PaintFrame::~PaintFrame() {
 void PaintFrame::initialize() {
 	Frame::initialize();
 
-	UndoButton* undoButton = new UndoButton(40, Component::WRAP_CONTENT, commandManager_);
-	RedoButton* redoButton = new RedoButton(40, Component::WRAP_CONTENT, commandManager_);
+	UndoButton* undoButton = new UndoButton(60, Component::WRAP_CONTENT, commandManager_);
+	RedoButton* redoButton = new RedoButton(60, Component::WRAP_CONTENT, commandManager_);
 	undoButton->setOnClickListener(new UndoButtonListener(commandManager_));
 	redoButton->setOnClickListener(new RedoButtonListener(commandManager_));
 	commandManager_->addObserver(undoButton);
 	commandManager_->addObserver(redoButton);
 
-	SelectionList* selectionList = new SelectionList(90, Component::WRAP_CONTENT, "Figure Type");
-	SelectionComponent* rectangleButton = new SelectionComponent(90, Component::WRAP_CONTENT, "Rectangle");
-	SelectionComponent* ellipseButton = new SelectionComponent(90, Component::WRAP_CONTENT, "Ellipse");
+	SelectionList* selectionList = new SelectionList(120, Component::WRAP_CONTENT, "Figure Type");
+	SelectionComponent* rectangleButton = new SelectionComponent(120, Component::WRAP_CONTENT, "Rectangle");
+	SelectionComponent* ellipseButton = new SelectionComponent(120, Component::WRAP_CONTENT, "Ellipse");
 	rectangleButton->setOnClickListener(new FigureButtonListener(figureManager_, nullptr, Figure::Type::RectangleType));
 	ellipseButton->setOnClickListener(new FigureButtonListener(figureManager_, nullptr, Figure::Type::EllipseType));
 	selectionList->addChild(rectangleButton);
@@ -44,9 +45,9 @@ void PaintFrame::initialize() {
 
 	Menu* toolMenu = new Menu(90, Component::WRAP_CONTENT, "Tool");
 	RadioButtonGroup* toolRadioGroup = new RadioButtonGroup(Component::WRAP_CONTENT, Component::WRAP_CONTENT);
-	RadioButton* penRadioButton = new RadioButton(150, Component::WRAP_CONTENT, "PEN");
-	RadioButton* eraserRadioButton = new RadioButton(150, Component::WRAP_CONTENT, "ERASER");
-	RadioButton* movePositionRadioButton = new RadioButton(150, Component::WRAP_CONTENT, "MOVE POSITION");
+	RadioButton* penRadioButton = new RadioButton(180, Component::WRAP_CONTENT, "PEN");
+	RadioButton* eraserRadioButton = new RadioButton(180, Component::WRAP_CONTENT, "ERASER");
+	RadioButton* movePositionRadioButton = new RadioButton(180, Component::WRAP_CONTENT, "MOVE POSITION");
 	penRadioButton->setOnClickListener(new SetToolButtonListener(figureManager_, PaintTool::Pen));
 	eraserRadioButton->setOnClickListener(new SetToolButtonListener(figureManager_, PaintTool::Eraser));
 	movePositionRadioButton->setOnClickListener(new SetToolButtonListener(figureManager_, PaintTool::MovePosition));
@@ -56,6 +57,7 @@ void PaintFrame::initialize() {
 	toolRadioGroup->addChild(movePositionRadioButton);
 	toolRadioGroup->select(penRadioButton);
 	toolMenu->addComponent(toolRadioGroup);
+	toolMenu->addComponent(new EditText(100, Component::WRAP_CONTENT, this));
 
 	menuBar_ = new MenuBar(hWnd_);
 	menuBar_->setPadding(0);
@@ -80,7 +82,6 @@ void PaintFrame::eventHandler(MyEvent e) {
 			commandManager_->execute(command);
 		}
 	}
-	
 }
 
 void PaintFrame::repaint() {
@@ -89,4 +90,5 @@ void PaintFrame::repaint() {
 	}
 
 	Frame::repaint();
+	
 }

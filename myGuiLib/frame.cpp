@@ -6,6 +6,7 @@
 // 일단은 전역 변수 1개는 사용한다.
 extern Frame* mainWindow;
 // 전역함수로는 윈도 메시지 처리 함수가 있다.
+
 LRESULT CALLBACK WndProc(HWND Hw, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 
@@ -130,6 +131,21 @@ void Frame::eventHandler(MyEvent e)
 
 void Frame::invalidate() {
 	InvalidateRect(hWnd_, nullptr, true);
+	for (HWND hwnd : hwndList_) {
+		ShowWindow(hwnd, SW_HIDE);
+	}
+}
+
+void Frame::addHWND(HWND hwnd) {
+	hwndList_.push_back(hwnd);
+}
+
+void Frame::removeHWND(HWND hwnd) {
+	hwndList_.remove(hwnd);
+}
+
+HWND Frame::getHWND() const {
+	return hWnd_;
 }
 
 void Frame::repaint() {

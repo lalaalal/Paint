@@ -5,7 +5,7 @@ Menu::Menu(MyPoint at, int width, int height, std::string text)
 	: Button(at, width, height, text) {
 	MyPoint menuListPoint(at_.x_, at_.y_ + getHeight() + interval_);
 	menuList_ = new PopUpList(menuListPoint);
-	menuList_->setVisibility(false);
+	menuList_->closeList();
 }
 
 Menu::Menu(int width, int height, std::string text) 

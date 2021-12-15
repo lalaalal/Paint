@@ -87,6 +87,9 @@
     <ClCompile Include="RadioButtonGroup.cpp">
       <Filter>Source Files\Component\RadioButton</Filter>
     </ClCompile>
+    <ClCompile Include="EditText.cpp">
+      <Filter>Source Files\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frame.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="RadioButtonGroup.h">
       <Filter>Header Files\Component\RadioButton</Filter>
+    </ClInclude>
+    <ClInclude Include="EditText.h">
+      <Filter>Header Files\Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

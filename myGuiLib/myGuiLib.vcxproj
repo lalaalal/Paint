@@ -159,6 +159,7 @@
     <ClCompile Include="SelectionGroup.cpp" />
     <ClCompile Include="SelectionList.cpp" />
     <ClCompile Include="SubMenu.cpp" />
+    <ClCompile Include="EditText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="SelectionGroup.h" />
     <ClInclude Include="SelectionList.h" />
     <ClInclude Include="SubMenu.h" />
+    <ClInclude Include="EditText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

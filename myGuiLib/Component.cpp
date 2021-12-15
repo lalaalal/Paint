@@ -83,7 +83,7 @@ int Component::getWidth() const {
 			return parent_->getWidth();
 		}
 	}
-	return rawWidth_ + padding_ * 2;
+	return rawWidth_;
 }
 
 int Component::getHeight() const {
@@ -95,7 +95,7 @@ int Component::getHeight() const {
 			return parent_->getWidth();
 		}
 	}
-	return rawHeight_ + padding_ * 2;
+	return rawHeight_;
 }
 
 void Component::setWidth(int width) {

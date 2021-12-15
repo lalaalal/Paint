@@ -16,8 +16,7 @@ protected:
 	HDC hDC_;    // 이 변수가 있어야 그림을 그릴 수 있다.
 
 	std::list<Component*> components_;
-
-
+	std::list<HWND> hwndList_;
 public:
 	Frame();
 	Frame(std::wstring, int, int);
@@ -28,6 +27,10 @@ public:
 	virtual void eventHandler( MyEvent e);
 	virtual void repaint();
 	void invalidate();
+
+	void addHWND(HWND hwnd);
+	void removeHWND(HWND hwnd);
+	HWND getHWND() const;
 
 	void addComponent(Component* component);
 	Component* findComponent(MyPoint at) const;
