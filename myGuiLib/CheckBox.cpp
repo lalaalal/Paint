@@ -22,7 +22,7 @@ void CheckBox::paintContent(HDC hDC) {
 }
 
 int CheckBox::getContentWidth() const {
-	std::string output = getCheckStateText() + "  " + text_;
+	std::string output = getCheckStateText() + INTERVAL_BLANK + text_;
 	return LETTER_WIDTH * (int)output.length();
 }
 

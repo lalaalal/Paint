@@ -20,8 +20,7 @@ public:
 	int getTop() const override;
 	int getRight() const override;
 	int getBottom() const override;
-
 private:
+
 	std::list<Figure*> children_;
 };
-

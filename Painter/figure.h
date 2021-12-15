@@ -3,7 +3,6 @@
 #include <string>
 
 #include "Misc.h"
-#include <limits>
 
 class Figure
 {
@@ -27,11 +26,10 @@ public:
 	virtual int getTop() const;
 	virtual int getRight() const;
 	virtual int getBottom() const;
-	int getIndex() const;
-	void setIndex(int index);
+
+	MyPoint getStartPoint() const;
+	
 protected:
 	MyPoint start_;
 	MyPoint end_;
-
-	int index_;
 };

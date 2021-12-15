@@ -4,7 +4,8 @@
 #include "OnClickListener.h"
 #include "figure.h"
 
-class FigureManager;
+#include "FigureManager.h"
+
 class Label;
 class CommandManager;
 class Button;
@@ -18,16 +19,7 @@ public:
 private:
 	FigureManager* figureManager_;
 	Label* label_;
-	Figure::Type type_;
-};
-
-class FruitButtonListener : public OnClickListener {
-public:
-	FruitButtonListener(Label* label, std::string text);
-	void onClick(MyEvent e) override;
-private:
-	Label* label_;
-	std::string text_;
+	const Figure::Type TYPE;
 };
 
 class UndoButtonListener : public OnClickListener {
@@ -50,4 +42,24 @@ public:
 	static const std::string REDOABLE_TEXT;
 private:
 	CommandManager* commandManager_;
+};
+
+class SetToolButtonListener : public OnClickListener {
+public:
+	SetToolButtonListener(FigureManager* figureManager, PaintTool tool);
+	void onClick(MyEvent e) override;
+
+private:
+	FigureManager* figureManager_;
+	const PaintTool TOOL;
+};
+
+class MovePositionButtonListener : public OnClickListener {
+public:
+	MovePositionButtonListener(FigureManager* figureManager, FigureMovePosition position);
+	void onClick(MyEvent e) override;
+
+private:
+	FigureManager* figureManager_;
+	const FigureMovePosition POSITION;
 };

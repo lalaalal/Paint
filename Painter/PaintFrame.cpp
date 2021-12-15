@@ -42,11 +42,27 @@ void PaintFrame::initialize() {
 	selectionList->addChild(rectangleButton);
 	selectionList->addChild(ellipseButton);
 
+	Menu* toolMenu = new Menu(90, Component::WRAP_CONTENT, "Tool");
+	RadioButtonGroup* toolRadioGroup = new RadioButtonGroup(Component::WRAP_CONTENT, Component::WRAP_CONTENT);
+	RadioButton* penRadioButton = new RadioButton(150, Component::WRAP_CONTENT, "PEN");
+	RadioButton* eraserRadioButton = new RadioButton(150, Component::WRAP_CONTENT, "ERASER");
+	RadioButton* movePositionRadioButton = new RadioButton(150, Component::WRAP_CONTENT, "MOVE POSITION");
+	penRadioButton->setOnClickListener(new SetToolButtonListener(figureManager_, PaintTool::Pen));
+	eraserRadioButton->setOnClickListener(new SetToolButtonListener(figureManager_, PaintTool::Eraser));
+	movePositionRadioButton->setOnClickListener(new SetToolButtonListener(figureManager_, PaintTool::MovePosition));
+
+	toolRadioGroup->addChild(penRadioButton);
+	toolRadioGroup->addChild(eraserRadioButton);
+	toolRadioGroup->addChild(movePositionRadioButton);
+	toolRadioGroup->select(penRadioButton);
+	toolMenu->addComponent(toolRadioGroup);
+
 	menuBar_ = new MenuBar(hWnd_);
 	menuBar_->setPadding(0);
 	menuBar_->setBorder(true);	
 	menuBar_->addChild(undoButton);
 	menuBar_->addChild(redoButton);
+	menuBar_->addChild(toolMenu);
 	menuBar_->addChild(selectionList);
 
 	addComponent(menuBar_);

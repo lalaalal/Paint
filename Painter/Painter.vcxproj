@@ -144,10 +144,12 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CreateFigureCommand.h" />
+    <ClInclude Include="EraseFigureCommand.h" />
     <ClInclude Include="figure.h" />
     <ClInclude Include="FigureManager.h" />
     <ClInclude Include="GroupFiguresCommand.h" />
     <ClInclude Include="MoveFigureCommand.h" />
+    <ClInclude Include="MoveFigurePositionCommand.h" />
     <ClInclude Include="myellipse.h" />
     <ClInclude Include="myrectangle.h" />
     <ClInclude Include="Observer.h" />
@@ -161,11 +163,13 @@
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CreateFigureCommand.cpp" />
+    <ClCompile Include="EraseFigureCommand.cpp" />
     <ClCompile Include="figure.cpp" />
     <ClCompile Include="FigureManager.cpp" />
     <ClCompile Include="GroupFiguresCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveFigureCommand.cpp" />
+    <ClCompile Include="MoveFigurePositionCommand.cpp" />
     <ClCompile Include="myellipse.cpp" />
     <ClCompile Include="myrectangle.cpp" />
     <ClCompile Include="PaintButtons.cpp" />

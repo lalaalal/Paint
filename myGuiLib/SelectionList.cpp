@@ -22,7 +22,7 @@ void SelectionList::onClick(MyEvent e) {
 
 bool SelectionList::isInComponent(MyPoint at) const {
 	return Button::isInComponent(at)
-		|| group_->isInComponent(at);
+		|| (group_->isVisible() && group_->isInComponent(at));
 }
 
 void SelectionList::paintContent(HDC hDC) {

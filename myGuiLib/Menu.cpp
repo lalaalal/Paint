@@ -51,7 +51,7 @@ void Menu::moveStartPoint(MyPoint delta) {
 
 bool Menu::isInComponent(MyPoint at) const {
 	return Button::isInComponent(at) 
-		|| menuList_->isInComponent(at);
+		|| (menuList_->isVisible() && menuList_->isInComponent(at));
 }
 
 void Menu::onClick(MyEvent e) {

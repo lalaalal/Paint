@@ -24,10 +24,10 @@ Figure* Figure::createFigure(MyPoint start, MyPoint end, Type type) {
 }
 
 Figure::Figure()
-	: start_(MyPoint(0, 0)), end_(MyPoint(0, 0)), index_(INT_MAX) { }
+	: start_(MyPoint(0, 0)), end_(MyPoint(0, 0)) { }
 
 Figure::Figure(MyPoint start, MyPoint end) 
-	: start_(start), end_(end), index_(INT_MAX) {
+	: start_(start), end_(end) {
 	if (start.x_ > end.x_) {
 		std::swap(start_.x_, end_.x_);
 	}
@@ -67,12 +67,6 @@ int Figure::getBottom() const {
 	return end_.y_;
 }
 
-int Figure::getIndex() const {
-	return index_;
-}
-
-void Figure::setIndex(int index) {
-	if (index >= 0) {
-		index_ = index;
-	}
+MyPoint Figure::getStartPoint() const {
+	return start_;
 }

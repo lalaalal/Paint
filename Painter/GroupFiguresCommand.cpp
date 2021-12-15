@@ -1,13 +1,14 @@
 #include "GroupFiguresCommand.h"
 #include "FigureManager.h"
 
-GroupFiguresCommand::GroupFiguresCommand(MyPoint start, MyPoint end, FigureManager* figureManager)
-	: start_(start), end_(end), figureManager_(figureManager) { }
+GroupFiguresCommand::GroupFiguresCommand(std::list<Figure*> figures, FigureManager* figureManager)
+	: figures_(figures), figureManager_(figureManager) { }
 
 void GroupFiguresCommand::execute() {
-	group_ = figureManager_->groupFigures(start_, end_);
+	backup_ = figureManager_->getFigures();
+	figureManager_->groupFigures(figures_);
 }
 
 void GroupFiguresCommand::undo() {
-	figureManager_->unGroupFigures(group_);
+	figureManager_->setFigures(backup_);
 }

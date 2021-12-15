@@ -35,6 +35,7 @@ void Component::paint(HDC hDC) {
 
 void Component::paintContent(HDC hDC) {
 	if (paintBorder_) {
+		int width = getWidth();
 		Rectangle(hDC, at_.x_, at_.y_, at_.x_ + getWidth(), at_.y_ + getHeight());
 	}
 }

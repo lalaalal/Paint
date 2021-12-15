@@ -72,6 +72,12 @@
     <ClInclude Include="FigureManager.h">
       <Filter>Header Files\Figure</Filter>
     </ClInclude>
+    <ClInclude Include="MoveFigurePositionCommand.h">
+      <Filter>Header Files\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="EraseFigureCommand.h">
+      <Filter>Header Files\Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -118,6 +124,12 @@
     </ClCompile>
     <ClCompile Include="FigureManager.cpp">
       <Filter>Source Files\Figure</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveFigurePositionCommand.cpp">
+      <Filter>Source Files\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="EraseFigureCommand.cpp">
+      <Filter>Source Files\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

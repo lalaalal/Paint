@@ -1,13 +1,13 @@
 #include "MoveFigureCommand.h"
 #include "FigureManager.h"
 
-MoveFigureCommand::MoveFigureCommand(MyPoint from, MyPoint to, FigureManager* figureManager)
-	: from_(from), to_(to), figureManager_(figureManager) { }
+MoveFigureCommand::MoveFigureCommand(Figure* figure, MyPoint delta, FigureManager* figureManager)
+	: figure_(figure), delta_(delta), figureManager_(figureManager) { }
 
 void MoveFigureCommand::execute() {
-	figureManager_->moveFigure(from_, to_);
+	figureManager_->moveFigure(figure_, delta_);
 }
 
 void MoveFigureCommand::undo() {
-	figureManager_->moveFigure(to_, from_);
+	figureManager_->moveFigure(figure_, -delta_);
 }

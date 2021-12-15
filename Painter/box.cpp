@@ -9,11 +9,7 @@ Box::Box(std::list<Figure*> figures) : children_(figures) {
 }
 
 Box::~Box() {
-	/*while (!children_.empty()) {
-		Figure* figure = children_.front();
-		delete figure;
-		children_.pop_front();
-	}*/
+
 }
 
 void Box::paint(HDC hDC) {

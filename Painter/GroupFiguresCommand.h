@@ -4,17 +4,15 @@
 
 #include "Command.h"
 
-class Box;
+class Figure;
 
 class GroupFiguresCommand : public Command {
 public:
-	GroupFiguresCommand(MyPoint start, MyPoint end, FigureManager* figureManager);
+	GroupFiguresCommand(std::list<Figure*> figures, FigureManager* figureManager);
 	void execute() override;
 	void undo() override;
 private:
-	MyPoint start_;
-	MyPoint end_;
+	std::list<Figure*> figures_;
 	FigureManager* figureManager_;
-	Box* group_ = nullptr;
-
+	std::list<Figure*> backup_;
 };

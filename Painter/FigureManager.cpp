@@ -3,20 +3,11 @@
 
 void FigureManager::addFigure(Figure* figure) {
 	if (figure != nullptr) {
-		std::list<Figure*>::iterator i;
-		for (i = figures_.begin(); i != figures_.end(); i++) {
-			if ((*i)->getIndex() > figure->getIndex()) {
-				break;
-			}
-		}
-		figures_.insert(i, figure);
-		if (figure->getIndex() == INT_MAX) {
-			figure->setIndex((int)figures_.size());
-		}
+		figures_.push_back(figure);
 	}
 }
 
-void FigureManager::addFigures(std::list<Figure*> figures) {
+void FigureManager::addFigures(const std::list<Figure*>& figures) {
 	for (Figure* figure : figures) {
 		addFigure(figure);
 	}
@@ -26,12 +17,37 @@ void FigureManager::removeFigure(Figure* figure) {
 	figures_.remove(figure);
 }
 
-void FigureManager::setFigureType(Figure::Type type) {
-	type_ = type;
+
+FigureManager::Preference FigureManager::getPreference() const {
+	return preference_;
+}
+
+FigureManager::Preference::Position FigureManager::getMovePosition() const {
+	return preference_.position_;
+}
+
+FigureManager::Preference::Tool FigureManager::getTool() const {
+	return preference_.tool_;
 }
 
 Figure::Type FigureManager::getFigureType() const {
-	return type_;
+	return preference_.figureType_;
+}
+
+void FigureManager::setPreference(Preference preference) {
+	preference_ = preference;
+}
+
+void FigureManager::setMovePosition(Preference::Position position) {
+	preference_.position_ = position;
+}
+
+void FigureManager::setTool(Preference::Tool tool) {
+	preference_.tool_ = tool;
+}
+
+void FigureManager::setFigureType(Figure::Type type) {
+	preference_.figureType_ = type;
 }
 
 std::list<Figure*> FigureManager::findFigures(MyPoint start, MyPoint end) const {
@@ -62,22 +78,29 @@ Figure* FigureManager::findFigure(MyPoint at) const {
 	return nullptr;
 }
 
-void FigureManager::moveFigure(MyPoint from, MyPoint to) {
-	Figure* figure = findFigure(from);
-	if (figure != nullptr) {
-		figure->move(to - from);
+void FigureManager::moveFigure(Figure* target, MyPoint delta) {
+	if (target != nullptr) {
+		target->move(delta);
 	}
 }
 
-Box* FigureManager::groupFigures(MyPoint start, MyPoint end) {
-	std::list<Figure*> figures = findFigures(start, end);
+void FigureManager::moveFigureFront(Figure* target) {
+	figures_.remove(target);
+	figures_.push_back(target);
+}
 
+void FigureManager::moveFigureBack(Figure* target) {
+	figures_.remove(target);
+	figures_.push_front(target);
+}
+
+Box* FigureManager::groupFigures(const std::list<Figure*>& figures) {
 	for (Figure* figure : figures) {
 		figures_.remove(figure);
 	}
 
 	Box* box = new Box(figures);
-	figures_.push_back(box);
+	addFigure(box);
 
 	return box;
 }
@@ -87,7 +110,7 @@ void FigureManager::unGroupFigures(Box* box) {
 		if (figure == box) {
 			figures_.remove(box);
 			std::list<Figure*> children = box->getChildren();
-			addFigures(box->getChildren());
+			figures_.splice(figures_.end(), children);
 			return;
 		}
 	}
@@ -95,4 +118,8 @@ void FigureManager::unGroupFigures(Box* box) {
 
 std::list<Figure*> FigureManager::getFigures() const {
 	return figures_;
+}
+
+void FigureManager::setFigures(const std::list<Figure*>& figures) {
+	figures_ = figures;
 }
