@@ -19,6 +19,24 @@
     <Filter Include="Source Files\Component">
       <UniqueIdentifier>{1e1834c0-334a-4f48-8f1b-72193ac4f2bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Component\Menu">
+      <UniqueIdentifier>{0db10658-ec14-4de6-b37b-568b97da03e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Component\SelectionList">
+      <UniqueIdentifier>{e42cf5e8-fa9a-4de0-a275-5f1a25b9b986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Component\Menu">
+      <UniqueIdentifier>{4a6bf988-5ca5-4cb5-9085-952555d5b4e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Component\SelectionList">
+      <UniqueIdentifier>{a1620df1-9793-4a99-b68c-caaf38ea6548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Component\RadioButton">
+      <UniqueIdentifier>{437c0e36-73a5-470e-86ed-c3fe10932f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Component\RadioButton">
+      <UniqueIdentifier>{93a9b20f-93d4-4e82-8ce8-ff0eb26640c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frame.cpp">
@@ -39,35 +57,35 @@
     <ClCompile Include="Label.cpp">
       <Filter>Source Files\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuBar.cpp">
-      <Filter>Source Files\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="PopUpList.cpp">
-      <Filter>Source Files\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="SubMenu.cpp">
-      <Filter>Source Files\Component</Filter>
-    </ClCompile>
     <ClCompile Include="CheckBox.cpp">
       <Filter>Source Files\Component</Filter>
     </ClCompile>
-    <ClCompile Include="RadioButton.cpp">
-      <Filter>Source Files\Component</Filter>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Component\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="RadioButtonGroup.cpp">
-      <Filter>Source Files\Component</Filter>
+    <ClCompile Include="MenuBar.cpp">
+      <Filter>Source Files\Component\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="PopUpList.cpp">
+      <Filter>Source Files\Component\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SubMenu.cpp">
+      <Filter>Source Files\Component\Menu</Filter>
     </ClCompile>
     <ClCompile Include="SelectionComponent.cpp">
-      <Filter>Source Files\Component</Filter>
+      <Filter>Source Files\Component\SelectionList</Filter>
     </ClCompile>
     <ClCompile Include="SelectionGroup.cpp">
-      <Filter>Source Files\Component</Filter>
+      <Filter>Source Files\Component\SelectionList</Filter>
     </ClCompile>
     <ClCompile Include="SelectionList.cpp">
-      <Filter>Source Files\Component</Filter>
+      <Filter>Source Files\Component\SelectionList</Filter>
+    </ClCompile>
+    <ClCompile Include="RadioButton.cpp">
+      <Filter>Source Files\Component\RadioButton</Filter>
+    </ClCompile>
+    <ClCompile Include="RadioButtonGroup.cpp">
+      <Filter>Source Files\Component\RadioButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,38 +107,38 @@
     <ClInclude Include="Label.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuBar.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="PopUpList.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="SubMenu.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
     <ClInclude Include="OnClickListener.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
     <ClInclude Include="CheckBox.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
-    <ClInclude Include="RadioButton.h">
-      <Filter>Header Files\Component</Filter>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\Component\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="RadioButtonGroup.h">
-      <Filter>Header Files\Component</Filter>
+    <ClInclude Include="MenuBar.h">
+      <Filter>Header Files\Component\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="PopUpList.h">
+      <Filter>Header Files\Component\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SubMenu.h">
+      <Filter>Header Files\Component\Menu</Filter>
     </ClInclude>
     <ClInclude Include="SelectionComponent.h">
-      <Filter>Header Files\Component</Filter>
+      <Filter>Header Files\Component\SelectionList</Filter>
     </ClInclude>
     <ClInclude Include="SelectionGroup.h">
-      <Filter>Header Files\Component</Filter>
+      <Filter>Header Files\Component\SelectionList</Filter>
     </ClInclude>
     <ClInclude Include="SelectionList.h">
-      <Filter>Header Files\Component</Filter>
+      <Filter>Header Files\Component\SelectionList</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioButton.h">
+      <Filter>Header Files\Component\RadioButton</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioButtonGroup.h">
+      <Filter>Header Files\Component\RadioButton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

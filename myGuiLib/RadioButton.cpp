@@ -12,6 +12,7 @@ void RadioButton::onClick(MyEvent e) {
 	if (radioButtonGroup != nullptr) {
 		radioButtonGroup->select(this);
 	}
+	Component::onClick(e);
 }
 
 std::string RadioButton::getCheckStateText() const {

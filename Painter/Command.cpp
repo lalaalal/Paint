@@ -2,9 +2,9 @@
 #include "CreateFigureCommand.h"
 #include "GroupFiguresCommand.h"
 #include "MoveFigureCommand.h"
-#include "PaintFrame.h"
+#include "FigureManager.h"
 
-Command* Command::createCommand(MyPoint start, MyEvent e, PaintFrame* frame) {
+Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureManager) {
 	MyPoint end = e.getPos();
 
 	if (start == end) {
@@ -12,13 +12,13 @@ Command* Command::createCommand(MyPoint start, MyEvent e, PaintFrame* frame) {
 	}
 
 	if (e.isLButtonUp() && e.isCtrlKeyDown()) {
-		return new MoveFigureCommand(start, end, frame);
+		return new MoveFigureCommand(start, end, figureManager);
 	}
 	else if (e.isLButtonUp() && e.isShiftKeyDown()) {
-		return new GroupFiguresCommand(start, end, frame);
+		return new GroupFiguresCommand(start, end, figureManager);
 	}
-	else if (e.isLButtonUp() && frame->getFigureType() != Figure::Type::None) {
-		return new CreateFigureCommand(start, end, frame);
+	else if (e.isLButtonUp() && figureManager->getFigureType() != Figure::Type::None) {
+		return new CreateFigureCommand(start, end, figureManager);
 	}
 	return nullptr;
 }

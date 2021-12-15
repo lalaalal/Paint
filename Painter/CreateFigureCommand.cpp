@@ -1,8 +1,8 @@
 #include "CreateFigureCommand.h"
-#include "PaintFrame.h"
+#include "FigureManager.h"
 
-CreateFigureCommand::CreateFigureCommand(MyPoint start, MyPoint end, PaintFrame* frame)
-	: start_(start), end_(end), frame_(frame) { }
+CreateFigureCommand::CreateFigureCommand(MyPoint start, MyPoint end, FigureManager* figureManager)
+	: start_(start), end_(end), figureManager_(figureManager) { }
 
 CreateFigureCommand::~CreateFigureCommand() {
 	if (figure_ != nullptr) {
@@ -11,18 +11,18 @@ CreateFigureCommand::~CreateFigureCommand() {
 }
 
 void CreateFigureCommand::execute() {
-	figure_ = Figure::createFigure(start_, end_, frame_->getFigureType());
-	frame_->addFigure(figure_);
+	figure_ = Figure::createFigure(start_, end_, figureManager_->getFigureType());
+	figureManager_->addFigure(figure_);
 }
 
 void CreateFigureCommand::undo() {
 	if (figure_ != nullptr) {
-		frame_->removeFigure(figure_);
+		figureManager_->removeFigure(figure_);
 	}
 }
 
 void CreateFigureCommand::redo() {
 	if (figure_ != nullptr) {
-		frame_->addFigure(figure_);
+		figureManager_->addFigure(figure_);
 	}
 }

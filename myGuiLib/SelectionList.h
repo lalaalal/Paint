@@ -20,8 +20,9 @@ public:
 	SelectionComponent* getSelected() const;
 
 	static const std::string DEFAULT_TEXT;
-
 private:
+	void setOnClickListener(OnClickListener* listener) override;
 	void updateText();
+
 	SelectionGroup* group_ = nullptr;
 };

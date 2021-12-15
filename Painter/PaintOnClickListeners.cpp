@@ -1,5 +1,5 @@
 #include "PaintOnClickListeners.h"
-#include "PaintFrame.h"
+#include "FigureManager.h"
 #include "Label.h"
 #include "Button.h"
 #include "CommandManager.h"
@@ -13,14 +13,14 @@ void FruitButtonListener::onClick(MyEvent e) {
 	}
 }
 
-FigureButtonListener::FigureButtonListener(PaintFrame* frame, Figure::Type type)
-	: frame_(frame), label_(nullptr), type_(type) { }
+FigureButtonListener::FigureButtonListener(FigureManager* figureManager, Figure::Type type)
+	: figureManager_(figureManager), label_(nullptr), type_(type) { }
 
-FigureButtonListener::FigureButtonListener(PaintFrame* frame, Label* label, Figure::Type type)
-	: frame_(frame), label_(label), type_(type) { }
+FigureButtonListener::FigureButtonListener(FigureManager* figureManager, Label* label, Figure::Type type)
+	: figureManager_(figureManager), label_(label), type_(type) { }
 
 void FigureButtonListener::onClick(MyEvent e) {
-	frame_->setFigureType(type_);
+	figureManager_->setFigureType(type_);
 
 	if (label_ != nullptr) {
 		std::string text = Figure::TYPE_NAME[(unsigned char)type_];

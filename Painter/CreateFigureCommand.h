@@ -8,7 +8,7 @@ class Figure;
 
 class CreateFigureCommand : public Command {
 public:
-	CreateFigureCommand(MyPoint start, MyPoint end, PaintFrame* frame);
+	CreateFigureCommand(MyPoint start, MyPoint end, FigureManager* figureManager);
 	~CreateFigureCommand();
 	void execute() override;
 	void undo() override;
@@ -17,7 +17,7 @@ public:
 private:
 	MyPoint start_;
 	MyPoint end_;
-	PaintFrame* frame_;
+	FigureManager* figureManager_;
 	Figure* figure_ = nullptr;
 };
 

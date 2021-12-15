@@ -2,7 +2,7 @@
 
 #include "Misc.h"
 
-class PaintFrame;
+class FigureManager;
 
 class Command {
 public:
@@ -10,6 +10,6 @@ public:
 	virtual void undo() = 0;
 	virtual void redo();
 
-	static Command* createCommand(MyPoint start, MyEvent e, PaintFrame* frame);
+	static Command* createCommand(MyPoint start, MyEvent e, FigureManager* figureManager);
 };
 

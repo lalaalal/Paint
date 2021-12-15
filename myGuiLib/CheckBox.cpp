@@ -18,12 +18,12 @@ void CheckBox::paintContent(HDC hDC) {
 
 	std::string output = getCheckStateText() + INTERVAL_BLANK + text_;
 
-	TextOutA(hDC, left, top, output.c_str(), output.length());
+	TextOutA(hDC, left, top, output.c_str(), (int)output.length());
 }
 
 int CheckBox::getContentWidth() const {
 	std::string output = getCheckStateText() + "  " + text_;
-	return LETTER_WIDTH * output.length();
+	return LETTER_WIDTH * (int)output.length();
 }
 
 int CheckBox::getContentHeight() const {
@@ -32,6 +32,7 @@ int CheckBox::getContentHeight() const {
 
 void CheckBox::onClick(MyEvent e) {
 	toggle();
+	Component::onClick(e);
 }
 
 std::string CheckBox::getText() const {
@@ -57,5 +58,3 @@ void CheckBox::toggle() {
 std::string CheckBox::getCheckStateText() const {
 	return checked_ ? CHECKED : NOT_CHECKED;
 }
-
-void CheckBox::setOnClickListener(OnClickListener* listener) { }

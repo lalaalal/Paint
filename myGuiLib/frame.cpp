@@ -1,6 +1,7 @@
 #include "frame.h"
 #include "Misc.h"
 #include "button.h"
+#include "Container.h"
 #include <iostream>
 // 일단은 전역 변수 1개는 사용한다.
 extern Frame* mainWindow;
@@ -106,7 +107,7 @@ void Frame::run() {
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
 		//if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)
-		if (!TranslateAccelerator(msg. hwnd, NULL, &msg))
+		if (!TranslateAccelerator(msg.hwnd, NULL, &msg))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);

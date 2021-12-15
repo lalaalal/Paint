@@ -145,6 +145,7 @@
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CreateFigureCommand.h" />
     <ClInclude Include="figure.h" />
+    <ClInclude Include="FigureManager.h" />
     <ClInclude Include="GroupFiguresCommand.h" />
     <ClInclude Include="MoveFigureCommand.h" />
     <ClInclude Include="myellipse.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CreateFigureCommand.cpp" />
     <ClCompile Include="figure.cpp" />
+    <ClCompile Include="FigureManager.cpp" />
     <ClCompile Include="GroupFiguresCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveFigureCommand.cpp" />

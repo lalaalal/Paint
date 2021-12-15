@@ -10,4 +10,6 @@ void SelectionComponent::onClick(MyEvent e) {
 	if (selectionGroup != nullptr) {
 		selectionGroup->select(this);
 	}
+
+	Component::onClick(e);
 }

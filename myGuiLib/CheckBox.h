@@ -37,7 +37,5 @@ protected:
 	bool checked_ = false;
 
 private:
-	void setOnClickListener(OnClickListener* listener) override;
-
 	std::string text_;
 };

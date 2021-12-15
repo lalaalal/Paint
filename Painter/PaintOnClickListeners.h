@@ -4,19 +4,19 @@
 #include "OnClickListener.h"
 #include "figure.h"
 
-class PaintFrame;
+class FigureManager;
 class Label;
 class CommandManager;
 class Button;
 
 class FigureButtonListener : public OnClickListener {
 public:
-	FigureButtonListener(PaintFrame* frame, Figure::Type type);
-	FigureButtonListener(PaintFrame* frame, Label* label, Figure::Type type);
+	FigureButtonListener(FigureManager* figureManager, Figure::Type type);
+	FigureButtonListener(FigureManager* figureManager, Label* label, Figure::Type type);
 	void onClick(MyEvent e) override;
 
 private:
-	PaintFrame* frame_;
+	FigureManager* figureManager_;
 	Label* label_;
 	Figure::Type type_;
 };

@@ -2,7 +2,7 @@
 #include "SelectionComponent.h"
 
 SelectionGroup::SelectionGroup(MyPoint at)
-	: Container(at, WRAP_CONTENT, WRAP_CONTENT, Orientation::VERTICAL) {
+	: Container(at, WRAP_CONTENT, WRAP_CONTENT, true, Orientation::VERTICAL) {
 	closeList();
 	setPadding(0);
 }

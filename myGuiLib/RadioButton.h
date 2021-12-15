@@ -14,4 +14,3 @@ protected:
 	std::string getCheckStateText() const override;
 
 };
-

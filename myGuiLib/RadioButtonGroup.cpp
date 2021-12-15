@@ -2,7 +2,9 @@
 #include "RadioButton.h"
 
 RadioButtonGroup::RadioButtonGroup(MyPoint at, int width, int height, bool paintBorder)
-	: Container(at, width, height, paintBorder, Orientation::VERTICAL) { }
+	: Container(at, width, height, paintBorder, Orientation::VERTICAL) {
+	setPadding(0);
+}
 
 RadioButtonGroup::RadioButtonGroup(int width, int height)
 	: RadioButtonGroup({0, 0}, width, height) { }

@@ -17,7 +17,7 @@ void SelectionList::onClick(MyEvent e) {
 	}
 	else {
 		group_->toggle();
-	}	
+	}
 }
 
 bool SelectionList::isInComponent(MyPoint at) const {
@@ -47,6 +47,8 @@ void SelectionList::addChild(SelectionComponent* component) {
 SelectionComponent* SelectionList::getSelected() const {
 	return group_->getSelected();
 }
+
+void SelectionList::setOnClickListener(OnClickListener* listener) { }
 
 void SelectionList::updateText() {
 	SelectionComponent* selected = getSelected();
