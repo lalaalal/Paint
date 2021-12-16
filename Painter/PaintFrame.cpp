@@ -90,7 +90,6 @@ void PaintFrame::initialize() {
 	groupBorderCheckBox->setOnClickListener(new GroupBorderCheckBoxListener(figureManager_, groupBorderCheckBox));
 	groupBorderCheckBox->setChecked(true);
 	
-
 	errorRangeSubMenu->addComponent(errorRangeSpinButton);
 	etcMenu->addComponent(groupBorderCheckBox);
 	etcMenu->addComponent(errorRangeSubMenu);
@@ -105,6 +104,8 @@ void PaintFrame::initialize() {
 	menuBar_->addChild(toolMenu);
 	menuBar_->addChild(colorMenu);
 	menuBar_->addChild(etcMenu);
+
+    figureManager_->setErrorRangeSpinButton(errorRangeSpinButton);
 
 	addComponent(menuBar_);
 }
