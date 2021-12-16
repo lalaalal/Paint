@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="box.h" />
+    <ClInclude Include="ColorMenu.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CreateFigureCommand.h" />
@@ -157,9 +158,11 @@
     <ClInclude Include="PaintOnClickListeners.h" />
     <ClInclude Include="PaintFrame.h" />
     <ClInclude Include="Subject.h" />
+    <ClInclude Include="UnGroupFiguresCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="box.cpp" />
+    <ClCompile Include="ColorMenu.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CreateFigureCommand.cpp" />
@@ -176,6 +179,7 @@
     <ClCompile Include="PaintOnClickListeners.cpp" />
     <ClCompile Include="PaintFrame.cpp" />
     <ClCompile Include="Subject.cpp" />
+    <ClCompile Include="UnGroupFiguresCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\myGuiLib\myGuiLib.vcxproj">

@@ -11,7 +11,8 @@ CreateFigureCommand::~CreateFigureCommand() {
 }
 
 void CreateFigureCommand::execute() {
-	figure_ = Figure::createFigure(start_, end_, figureManager_->getFigureType());
+	COLORREF color = figureManager_->getSelectedColor();
+	figure_ = Figure::createFigure(start_, end_, color, figureManager_->getFigureType());
 	figureManager_->addFigure(figure_);
 }
 

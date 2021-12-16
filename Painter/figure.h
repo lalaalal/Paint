@@ -4,8 +4,7 @@
 
 #include "Misc.h"
 
-class Figure
-{
+class Figure {
 public:
 	enum class Type : unsigned char {
 		None = 0, RectangleType, EllipseType
@@ -13,11 +12,11 @@ public:
 
 	static const std::string TYPE_NAME[];
 
-	static Figure* createFigure(MyPoint start, MyPoint end, Type type);
+	static Figure* createFigure(MyPoint start, MyPoint end, COLORREF color, Type type);
 
 	Figure();
-	Figure(MyPoint start, MyPoint end);
-	virtual void paint(HDC hDC) = 0;
+	Figure(MyPoint start, MyPoint end, COLORREF color = RGB(0, 0, 0));
+	void paint(HDC hDC);
 	bool isInArea(MyPoint start, MyPoint end) const;
 	bool isInFigure(MyPoint at) const;
 	virtual void move(MyPoint delta);
@@ -30,6 +29,9 @@ public:
 	MyPoint getStartPoint() const;
 	
 protected:
+	virtual void paintFigure(HDC hDC) = 0;
+
 	MyPoint start_;
 	MyPoint end_;
+	COLORREF color_;
 };

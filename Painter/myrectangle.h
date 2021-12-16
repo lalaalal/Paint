@@ -3,9 +3,10 @@
 #include "Misc.h"
 #include "figure.h"
 
-class MyRectangle : public Figure
-{
+class MyRectangle : public Figure {
 public:
-	MyRectangle(MyPoint start, MyPoint end);
-	void paint(HDC hDC) override;
+	MyRectangle(MyPoint start, MyPoint end, COLORREF color = RGB(0, 0, 0));
+
+protected:
+	void paintFigure(HDC hDC) override;
 };

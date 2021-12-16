@@ -1,4 +1,5 @@
 #include "FigureManager.h"
+#include "ColorMenu.h"
 #include "box.h"
 
 void FigureManager::addFigure(Figure* figure) {
@@ -122,4 +123,15 @@ std::list<Figure*> FigureManager::getFigures() const {
 
 void FigureManager::setFigures(const std::list<Figure*>& figures) {
 	figures_ = figures;
+}
+
+void FigureManager::setColorMenu(ColorMenu* colorMenu) {
+	colorMenu_ = colorMenu;
+}
+
+COLORREF FigureManager::getSelectedColor() const {
+	if (colorMenu_ != nullptr) {
+		return colorMenu_->getColor();
+	}
+	return RGB(0, 0, 0);
 }

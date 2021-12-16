@@ -149,6 +149,7 @@ HWND Frame::getHWND() const {
 }
 
 void Frame::repaint() {
+	SelectObject(hDC_, GetStockObject(BLACK_PEN));
 	for (Component* component : components_) {
 		component->paint(hDC_);
 	}

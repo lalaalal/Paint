@@ -6,6 +6,8 @@
 class MyEllipse : public Figure
 {
 public:
-	MyEllipse(MyPoint start, MyPoint end);
-	void paint(HDC hDC);
+	MyEllipse(MyPoint start, MyPoint end, COLORREF color = RGB(0, 0, 0));
+
+protected:
+	void paintFigure(HDC hDC);
 };

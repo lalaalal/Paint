@@ -3,8 +3,10 @@
 #include "GroupFiguresCommand.h"
 #include "MoveFigureCommand.h"
 #include "MoveFigurePositionCommand.h"
+#include "UnGroupFiguresCommand.h"
 #include "FigureManager.h"
 #include "EraseFigureCommand.h"
+#include "box.h"
 
 Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureManager) {
 	FigureManager::Preference preference = figureManager->getPreference();
@@ -44,11 +46,21 @@ Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureM
 				return new EraseFigureCommand(figure, figureManager);
 			}
 		}
+		return nullptr;
 
 	case PaintTool::Pen:
 		if (delta.Abs() > ERROR_RANGE && e.isLButtonUp()
 			&& preference.figureType_ != Figure::Type::None) {
 			return new CreateFigureCommand(start, end, figureManager);
+		}
+		return nullptr;
+	case PaintTool::UnGroup:
+		if (delta.Abs() < ERROR_RANGE && e.isLButtonUp()) {
+			Figure* figure = figureManager->findFigure(start);
+			Box* box = dynamic_cast<Box*>(figure);
+			if (box != nullptr) {
+				return new UnGroupFiguresCommand(box, figureManager);
+			}
 		}
 	default:
 		return nullptr;

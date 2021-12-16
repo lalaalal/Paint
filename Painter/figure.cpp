@@ -8,15 +8,15 @@ const std::string Figure::TYPE_NAME[] = {
 		"None", "Rectangle", "Ellipse"
 };
 
-Figure* Figure::createFigure(MyPoint start, MyPoint end, Type type) {
+Figure* Figure::createFigure(MyPoint start, MyPoint end, COLORREF color, Type type) {
 	if (start == end) {
 		return nullptr;
 	}
 	switch (type) {
 	case Type::RectangleType:
-		return new MyRectangle(start, end);
+		return new MyRectangle(start, end, color);
 	case Type::EllipseType:
-		return new MyEllipse(start, end);
+		return new MyEllipse(start, end, color);
 	default:
 		break;
 	}
@@ -24,16 +24,22 @@ Figure* Figure::createFigure(MyPoint start, MyPoint end, Type type) {
 }
 
 Figure::Figure()
-	: start_(MyPoint(0, 0)), end_(MyPoint(0, 0)) { }
+	: start_(MyPoint(0, 0)), end_(MyPoint(0, 0)), color_(RGB(0, 0, 0)) { }
 
-Figure::Figure(MyPoint start, MyPoint end) 
-	: start_(start), end_(end) {
+Figure::Figure(MyPoint start, MyPoint end, COLORREF color) 
+	: start_(start), end_(end), color_(color) {
 	if (start.x_ > end.x_) {
 		std::swap(start_.x_, end_.x_);
 	}
 	if (start.y_ > end.y_) {
 		std::swap(start_.y_, end_.y_);
 	}
+}
+
+void Figure::paint(HDC hDC) {
+	SelectObject(hDC, GetStockObject(DC_PEN));
+	SetDCPenColor(hDC, color_);
+	paintFigure(hDC);
 }
 
 bool Figure::isInArea(MyPoint start, MyPoint end) const {

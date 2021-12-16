@@ -80,7 +80,7 @@ int Component::getWidth() const {
 	}
 	else if (rawWidth_ == MATCH_PARENT) {
 		if (parent_ != nullptr) {
-			return parent_->getWidth();
+			return parent_->getContentWidth();
 		}
 	}
 	return rawWidth_;
@@ -92,7 +92,7 @@ int Component::getHeight() const {
 	}
 	else if (rawHeight_ == MATCH_PARENT) {
 		if (parent_ != nullptr) {
-			return parent_->getWidth();
+			return parent_->getContentHeight();
 		}
 	}
 	return rawHeight_;

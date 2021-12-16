@@ -11,7 +11,6 @@ public:
 
 	void onClick(MyEvent e) override;
 	bool isInComponent(MyPoint at) const override;
-	void paintContent(HDC hDC) override;
 
 	void setStartPoint(MyPoint at) override;
 	void moveStartPoint(MyPoint delta) override;
@@ -20,6 +19,10 @@ public:
 	SelectionComponent* getSelected() const;
 
 	static const std::string DEFAULT_TEXT;
+
+protected:
+	void paintContent(HDC hDC) override;
+
 private:
 	void setOnClickListener(OnClickListener* listener) override;
 	void updateText();

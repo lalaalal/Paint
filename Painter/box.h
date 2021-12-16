@@ -9,7 +9,7 @@ public:
 	Box();
 	Box(std::list<Figure*> figures);
 	virtual ~Box();
-	void paint(HDC hDC) override;
+	void paintFigure(HDC hDC) override;
 	void move(MyPoint delta) override;
 	void addChild(Figure* figure);
 	void addChildren(std::list<Figure*> figures);

@@ -2,16 +2,18 @@
 
 #include <list>
 
+#include "Misc.h"
 #include "figure.h"
 
 class Box;
+class ColorMenu;
 
 class FigureManager {
 public:
 	struct Preference {
 	public:
 		enum class Tool {
-			Pen, Eraser, MovePosition
+			Pen, Eraser, MovePosition, UnGroup
 		};
 
 		enum class Position {
@@ -21,6 +23,7 @@ public:
 		Tool tool_ = Tool::Pen;
 		Position position_ = Position::Front;
 		Figure::Type figureType_ = Figure::Type::None;
+		COLORREF color_ = RGB(0, 0, 0);
 	};
 
 	void addFigure(Figure* figure);
@@ -46,9 +49,12 @@ public:
 	std::list<Figure*> getFigures() const;
 	void setFigures(const std::list<Figure*>& figures);
 
+	void setColorMenu(ColorMenu* colorMenu);
+	COLORREF getSelectedColor() const;
 private:
 	std::list<Figure*> figures_;
 	Preference preference_;
+	ColorMenu* colorMenu_ = nullptr;
 };
 
 typedef FigureManager::Preference::Tool PaintTool;

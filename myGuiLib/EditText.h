@@ -10,17 +10,19 @@ class Frame;
 class EditText : public Component {
 public:
 	EditText(int width, int height, Frame* frame);
-	~EditText();
+	virtual ~EditText();
 
 	int getContentWidth() const override;
 	int getContentHeight() const override;
-
-	void paintContent(HDC hDC) override;
 
 	std::string getText() const;
 
 	static const int DEFAULT_PADDING = 10;
 	static const int DEFAULT_ET_HEIGHT = 20;
+
+protected:
+	void paintContent(HDC hDC) override;
+
 private:
 	HMENU editId_;
 	HWND hEdit_;

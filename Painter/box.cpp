@@ -12,7 +12,7 @@ Box::~Box() {
 
 }
 
-void Box::paint(HDC hDC) {
+void Box::paintFigure(HDC hDC) {
 	Rectangle(hDC, start_.x_, start_.y_, end_.x_, end_.y_);
 	for (Figure* figure : children_) {
 		figure->paint(hDC);

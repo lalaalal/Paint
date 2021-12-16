@@ -8,8 +8,6 @@ class CheckBox : public Component {
 public:
 	CheckBox(MyPoint at, int width, int height, std::string text = "");
 	CheckBox(int width, int height, std::string text = "");
-
-	void paintContent(HDC hDC) override;
 	
 	int getContentWidth() const override;
 	int getContentHeight() const override;
@@ -33,6 +31,7 @@ public:
 	static const std::string INTERVAL_BLANK;
 
 protected:
+	void paintContent(HDC hDC) override;
 	virtual std::string getCheckStateText() const;
 	bool checked_ = false;
 
