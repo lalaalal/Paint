@@ -158,6 +158,7 @@
     <ClCompile Include="SelectionComponent.cpp" />
     <ClCompile Include="SelectionGroup.cpp" />
     <ClCompile Include="SelectionList.cpp" />
+    <ClCompile Include="SpinButton.cpp" />
     <ClCompile Include="SubMenu.cpp" />
     <ClCompile Include="EditText.cpp" />
   </ItemGroup>
@@ -178,6 +179,7 @@
     <ClInclude Include="SelectionComponent.h" />
     <ClInclude Include="SelectionGroup.h" />
     <ClInclude Include="SelectionList.h" />
+    <ClInclude Include="SpinButton.h" />
     <ClInclude Include="SubMenu.h" />
     <ClInclude Include="EditText.h" />
   </ItemGroup>

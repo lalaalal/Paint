@@ -5,10 +5,12 @@
 #include "figure.h"
 
 #include "FigureManager.h"
+#include "CheckBox.h"
 
 class Label;
 class CommandManager;
 class Button;
+class PaintFrame;
 
 class FigureButtonListener : public OnClickListener {
 public:
@@ -62,4 +64,22 @@ public:
 private:
 	FigureManager* figureManager_;
 	const FigureMovePosition POSITION;
+};
+
+class GroupBorderCheckBoxListener : public OnClickListener {
+public:
+	GroupBorderCheckBoxListener(FigureManager* figureManager, CheckBox* checkBox);
+	void onClick(MyEvent e) override;
+
+private:
+	FigureManager* figureManager_;
+	const CheckBox* checkBox_;
+};
+
+class SaveButtonListener : public OnClickListener {
+public:
+	SaveButtonListener(PaintFrame* frame);
+	void onClick(MyEvent e) override;
+private:
+	PaintFrame* frame_;
 };

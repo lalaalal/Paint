@@ -78,11 +78,11 @@
     <ClInclude Include="EraseFigureCommand.h">
       <Filter>Header Files\Command</Filter>
     </ClInclude>
-    <ClInclude Include="UnGroupFiguresCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ColorMenu.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnGroupFiguresCommand.h">
+      <Filter>Header Files\Figure</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,11 +137,11 @@
     <ClCompile Include="EraseFigureCommand.cpp">
       <Filter>Source Files\Command</Filter>
     </ClCompile>
-    <ClCompile Include="UnGroupFiguresCommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ColorMenu.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnGroupFiguresCommand.cpp">
+      <Filter>Source Files\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

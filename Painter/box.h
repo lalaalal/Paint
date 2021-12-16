@@ -4,10 +4,11 @@
 
 #include "figure.h"
 
+class FigureManager;
+
 class Box : public Figure {
 public:
-	Box();
-	Box(std::list<Figure*> figures);
+	Box(std::list<Figure*> figures, const FigureManager* figureManager);
 	virtual ~Box();
 	void paintFigure(HDC hDC) override;
 	void move(MyPoint delta) override;
@@ -21,6 +22,6 @@ public:
 	int getRight() const override;
 	int getBottom() const override;
 private:
-
+	const FigureManager* figureManager_;
 	std::list<Figure*> children_;
 };

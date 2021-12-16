@@ -3,6 +3,7 @@
 #include "Label.h"
 #include "Button.h"
 #include "CommandManager.h"
+#include "PaintFrame.h"
 
 FigureButtonListener::FigureButtonListener(FigureManager* figureManager, Figure::Type type)
 	: figureManager_(figureManager), label_(nullptr), TYPE(type) { }
@@ -49,4 +50,20 @@ MovePositionButtonListener::MovePositionButtonListener(FigureManager* figureMana
 
 void MovePositionButtonListener::onClick(MyEvent e) {
 	figureManager_->setMovePosition(POSITION);
+}
+
+GroupBorderCheckBoxListener::GroupBorderCheckBoxListener(FigureManager* figureManager, CheckBox* checkBox)
+	: figureManager_(figureManager), checkBox_(checkBox) { }
+
+void GroupBorderCheckBoxListener::onClick(MyEvent e) {
+	FigureManager::Preference preference = figureManager_->getPreference();
+	preference.boxBorder_ = checkBox_->isChecked();
+	figureManager_->setPreference(preference);
+}
+
+SaveButtonListener::SaveButtonListener(PaintFrame* frame)
+	: frame_(frame) { }
+
+void SaveButtonListener::onClick(MyEvent e) {
+	frame_->save();
 }

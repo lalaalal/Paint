@@ -90,6 +90,9 @@
     <ClCompile Include="EditText.cpp">
       <Filter>Source Files\Component</Filter>
     </ClCompile>
+    <ClCompile Include="SpinButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frame.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="EditText.h">
       <Filter>Header Files\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinButton.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

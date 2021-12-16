@@ -1,10 +1,10 @@
 #include <climits>
 
 #include "box.h"
+#include "FigureManager.h"
 
-Box::Box() { }
-
-Box::Box(std::list<Figure*> figures) : children_(figures) {
+Box::Box(std::list<Figure*> figures, const FigureManager* figureManager)
+	: children_(figures), figureManager_(figureManager) {
 	resize();
 }
 
@@ -13,7 +13,10 @@ Box::~Box() {
 }
 
 void Box::paintFigure(HDC hDC) {
-	Rectangle(hDC, start_.x_, start_.y_, end_.x_, end_.y_);
+	bool showBorder = figureManager_->getPreference().boxBorder_;
+	if (showBorder) {
+		Rectangle(hDC, start_.x_, start_.y_, end_.x_, end_.y_);
+	}
 	for (Figure* figure : children_) {
 		figure->paint(hDC);
 	}

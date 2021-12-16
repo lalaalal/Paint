@@ -100,7 +100,7 @@ Box* FigureManager::groupFigures(const std::list<Figure*>& figures) {
 		figures_.remove(figure);
 	}
 
-	Box* box = new Box(figures);
+	Box* box = new Box(figures, this);
 	addFigure(box);
 
 	return box;
@@ -125,7 +125,7 @@ void FigureManager::setFigures(const std::list<Figure*>& figures) {
 	figures_ = figures;
 }
 
-void FigureManager::setColorMenu(ColorMenu* colorMenu) {
+void FigureManager::setColorMenu(const ColorMenu* colorMenu) {
 	colorMenu_ = colorMenu;
 }
 
@@ -134,4 +134,15 @@ COLORREF FigureManager::getSelectedColor() const {
 		return colorMenu_->getColor();
 	}
 	return RGB(0, 0, 0);
+}
+
+void FigureManager::setErrorRangeSpinButton(const SpinButton* errorRangeSpinButton) {
+	errorRangeSpinButton_ = errorRangeSpinButton;
+}
+
+int FigureManager::getErrorRange() const {
+	if (errorRangeSpinButton_ != nullptr) {
+		return errorRangeSpinButton_->getValue();
+	}
+	return DEFAULT_ERROR_RANGE;
 }

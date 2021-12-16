@@ -10,6 +10,8 @@ public:
 
 	int getWidth() const override;
 
+	void onClick(MyEvent e) override;
+
 private:
 	HWND hWND_;
 };

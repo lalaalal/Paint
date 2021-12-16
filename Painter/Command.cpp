@@ -12,9 +12,9 @@ Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureM
 	FigureManager::Preference preference = figureManager->getPreference();
 	MyPoint end = e.getPos();
 	MyPoint delta = end - start;
-	static const int ERROR_RANGE = 10;
+	int errorRange = figureManager->getErrorRange();
 
-	if (delta.Abs() > ERROR_RANGE
+	if (delta.Abs() > errorRange
 		&& e.isLButtonUp() && e.isCtrlKeyDown()) {
 		Figure* figure = figureManager->findFigure(start);
 		if (figure != nullptr) {
@@ -31,7 +31,7 @@ Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureM
 	switch (preference.tool_) {
 	case PaintTool::MovePosition:
 		
-		if (delta.Abs() < ERROR_RANGE) {
+		if (delta.Abs() < errorRange) {
 			Figure* figure = figureManager->findFigure(end);
 			if (figure != nullptr) {
 				return new MoveFigurePositionCommand(figure, figureManager, preference.position_);
@@ -40,7 +40,7 @@ Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureM
 		return nullptr;
 
 	case PaintTool::Eraser:
-		if (delta.Abs() < ERROR_RANGE) {
+		if (delta.Abs() < errorRange) {
 			Figure* figure = figureManager->findFigure(end);
 			if (figure != nullptr) {
 				return new EraseFigureCommand(figure, figureManager);
@@ -49,13 +49,13 @@ Command* Command::createCommand(MyPoint start, MyEvent e, FigureManager* figureM
 		return nullptr;
 
 	case PaintTool::Pen:
-		if (delta.Abs() > ERROR_RANGE && e.isLButtonUp()
+		if (delta.Abs() > errorRange && e.isLButtonUp()
 			&& preference.figureType_ != Figure::Type::None) {
 			return new CreateFigureCommand(start, end, figureManager);
 		}
 		return nullptr;
 	case PaintTool::UnGroup:
-		if (delta.Abs() < ERROR_RANGE && e.isLButtonUp()) {
+		if (delta.Abs() < errorRange && e.isLButtonUp()) {
 			Figure* figure = figureManager->findFigure(start);
 			Box* box = dynamic_cast<Box*>(figure);
 			if (box != nullptr) {

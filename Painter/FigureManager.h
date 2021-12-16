@@ -4,6 +4,7 @@
 
 #include "Misc.h"
 #include "figure.h"
+#include "SpinButton.h"
 
 class Box;
 class ColorMenu;
@@ -22,8 +23,9 @@ public:
 
 		Tool tool_ = Tool::Pen;
 		Position position_ = Position::Front;
-		Figure::Type figureType_ = Figure::Type::None;
+		Figure::Type figureType_ = Figure::Type::RectangleType;
 		COLORREF color_ = RGB(0, 0, 0);
+		bool boxBorder_ = true;
 	};
 
 	void addFigure(Figure* figure);
@@ -49,12 +51,18 @@ public:
 	std::list<Figure*> getFigures() const;
 	void setFigures(const std::list<Figure*>& figures);
 
-	void setColorMenu(ColorMenu* colorMenu);
+	void setColorMenu(const ColorMenu* colorMenu);
 	COLORREF getSelectedColor() const;
+
+	void setErrorRangeSpinButton(const SpinButton* errorRangeSpinButton);
+	int getErrorRange() const;
+
+	static const int DEFAULT_ERROR_RANGE = 10;
 private:
 	std::list<Figure*> figures_;
 	Preference preference_;
-	ColorMenu* colorMenu_ = nullptr;
+	const ColorMenu* colorMenu_ = nullptr;
+	const SpinButton* errorRangeSpinButton_ = nullptr;
 };
 
 typedef FigureManager::Preference::Tool PaintTool;

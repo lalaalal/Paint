@@ -15,6 +15,7 @@ public:
 	void eventHandler(MyEvent e) override;
 	void repaint() override;
 
+	int save();
 private:
 	// 응용을 위해 필요한 변수
 	MyPoint start_;
